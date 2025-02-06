@@ -2,29 +2,22 @@ import React from "react";
 import { Head, Link } from "@inertiajs/react";
 import Navbar from "@/Components/Navbar";
 import NewsCard from "@/Components/Homapage/NewsCard";
+import Paginator from "@/Components/Homapage/Paginator";
 
 export default function Homepage(props) {
-    console.log(props);
+    // console.log(props);
     return (
         <>
             <div className="min-h-screen bg-slate-100">
                 <Navbar />
                 <Head title={props.title} />
 
-                <div className="p-5">
-                    <NewsCard news={props.news}/>
-                    {/* {props.news ? props.news.map((data, i) => {
+                <div className="flex justify-center flex-col items-center gap-4 lg:flex-row lg:flex-wrap lg:items-stretch p-4">
+                    <NewsCard news={props.news.data}/>
+                </div>
 
-                return(
-                    <div key={i} className='bg-white p-3 mb-2 rounded-sm shadow-sm'>
-                        <p className='text-xl'>{data.title}</p>
-                        <p>{data.description}</p>
-                        <p className='text-xs'>{data.category}</p>
-                        <p className='font-bold text-xs'>{data.author}</p>
-                    </div>
-                )
-
-                }) : "No News Available" } */}
+                <div className="flex justify-center items-center p-4">
+                    <Paginator meta={props.news.meta}/>
                 </div>
             </div>
         </>
